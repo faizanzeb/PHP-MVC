@@ -45,9 +45,29 @@ class UserController extends Controller
 	}
 
 	public function update()
-	{
-		# code...
-	}
+			{
+				
+				$user = new User();
+
+					$updateData = array(
+						'name' => "Pakistan",
+						'email' => "Pak@gmail.com",
+						'phone' => "2323",
+						'reg_no' => "PK33",
+						'address' => "PAK"
+						);
+						
+						$id=2;
+					
+
+					$response = $user->update($updateData,$id);
+					//var_dump($response);
+					if ($response) {
+						echo "<h1>User Updated</h1>";
+					}
+
+				//var_dump('user controller create');
+			}
 
 	public function delete()
 	{

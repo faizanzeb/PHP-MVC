@@ -41,17 +41,31 @@ class Model
 		return $result;
 	}
 
+	
+
 	public function update($data, $id)
 	{
+
+	$columns = array();
+	$values = array();
+	foreach ($data as $column => $value) {
+		$columns[] = $column;
+		$values[] = "'" . $value . "'";
+	}
+
+		
+		
 		$query = "UPDATE {$this->table} SET
-					name 		= '{$this->name}',
-					email 		= '{$this->email}',
-					phone 		= '{$this->phone}',
-					address 	= '{$this->address}',
-					designation = '{$this->designation}'
+					{$columns[0]} = {$values[0]},
+					{$columns[1]} = {$values[1]},
+					{$columns[2]} = {$values[2]},
+					{$columns[3]} = {$values[3]},
+					{$columns[4]} = {$values[4]}
 				  WHERE {$this->primaryKey} = '{$id}'";
 		$result = mysqli_query($this->connection, $query);
 		return $result;
+		
+		
 	}
 
 	public function findById($id)
